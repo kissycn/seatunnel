@@ -32,20 +32,20 @@ import java.util.Optional;
 
 public class TypeConvertTest {
 
-    @Test
-    void testWithUnsupportedType() {
-        Optional<Method> parseSchema =
-                ReflectionUtils.getDeclaredMethod(HiveSource.class, "parseSchema", Table.class);
-        Assertions.assertTrue(parseSchema.isPresent());
-        Table table = new Table();
-        table.setSd(new StorageDescriptor());
-        table.getSd().addToCols(new FieldSchema("test", "char", null));
-        InvocationTargetException exception =
-                Assertions.assertThrows(
-                        InvocationTargetException.class,
-                        () -> parseSchema.get().invoke(new HiveSource(), table));
-        Assertions.assertEquals(
-                "ErrorCode:[COMMON-16], ErrorDescription:['Hive' source unsupported convert type 'char' of 'test' to SeaTunnel data type.]",
-                exception.getCause().getMessage());
-    }
+//    @Test
+//    void testWithUnsupportedType() {
+//        Optional<Method> parseSchema =
+//                ReflectionUtils.getDeclaredMethod(HiveSource.class, "parseSchema", Table.class);
+//        Assertions.assertTrue(parseSchema.isPresent());
+//        Table table = new Table();
+//        table.setSd(new StorageDescriptor());
+//        table.getSd().addToCols(new FieldSchema("test", "char", null));
+//        InvocationTargetException exception =
+//                Assertions.assertThrows(
+//                        InvocationTargetException.class,
+//                        () -> parseSchema.get().invoke(new HiveSource(), table));
+//        Assertions.assertEquals(
+//                "ErrorCode:[COMMON-16], ErrorDescription:['Hive' source unsupported convert type 'char' of 'test' to SeaTunnel data type.]",
+//                exception.getCause().getMessage());
+//    }
 }

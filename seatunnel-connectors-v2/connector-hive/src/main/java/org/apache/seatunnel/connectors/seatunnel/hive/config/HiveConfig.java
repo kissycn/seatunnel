@@ -64,15 +64,15 @@ public class HiveConfig {
     public static final String ORC_OUTPUT_FORMAT_CLASSNAME =
             "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat";
 
-    public static Pair<String[], Table> getTableInfo(Config config) {
-        String table = config.getString(TABLE_NAME.key());
-        String[] splits = table.split("\\.");
-        if (splits.length != 2) {
-            throw new RuntimeException("Please config " + TABLE_NAME + " as db.table format");
-        }
-        HiveMetaStoreProxy hiveMetaStoreProxy = HiveMetaStoreProxy.getInstance(config);
-        Table tableInformation = hiveMetaStoreProxy.getTable(splits[0], splits[1]);
-        hiveMetaStoreProxy.close();
-        return Pair.of(splits, tableInformation);
-    }
+//    public static Pair<String[], Table> getTableInfo(Config config) {
+//        String table = config.getString(TABLE_NAME.key());
+//        String[] splits = table.split("\\.");
+//        if (splits.length != 2) {
+//            throw new RuntimeException("Please config " + TABLE_NAME + " as db.table format");
+//        }
+//        HiveMetaStoreProxy hiveMetaStoreProxy = HiveMetaStoreProxy.getInstance(config);
+//        Table tableInformation = hiveMetaStoreProxy.getTable(splits[0], splits[1]);
+//        hiveMetaStoreProxy.close();
+//        return Pair.of(splits, tableInformation);
+//    }
 }
